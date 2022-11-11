@@ -8,16 +8,28 @@ namespace TheSims
 {
     public class House
     {
-        List<Floor> Floors { get; set; }
+        public List<Floor> Floors { get; set; }
         public House()
         {
-            Floors = new List<Floor>();
-            Floors.Add(new Floor());
+            Floors = new List<Floor>();         
+        }
+            
+        public void AddFloors(int levels)
+        {
+            for(int i = 0; i<levels; i++)
+            {
+                Floors.Add(new Floor(i));
+            }
+        }
+        public void AddRoom(Room room, Floor floor)
+        {
+            floor.AddRoomToFloor(room);
         }
 
         public Floor GetFirstFloor()
         {
             return Floors[0];
         }
+      
     }
 }

@@ -9,10 +9,12 @@ namespace TheSims
     public class Floor
     {
         List<Room> Rooms { get; set; }
+        public int Level { get; set; }
 
-        public Floor()
+        public Floor(int level)
         {
             Rooms = new List<Room>();
+            Level = level;
         }
         public void AddRoomToFloor(Room roomToAdd)
         {

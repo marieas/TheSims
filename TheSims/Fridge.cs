@@ -8,5 +8,9 @@ namespace TheSims
 {
     public class  Fridge : InteriorItem
     {
+        public Fridge() : base("Kjøleskap")
+        {
+
+        }
     }
 }

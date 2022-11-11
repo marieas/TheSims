@@ -8,5 +8,10 @@ namespace TheSims
 {
     public class InteriorItem
     {
+        public string FurnitureName { get; private set; }
+        public InteriorItem(string furnitureName)
+        {
+            FurnitureName = furnitureName;
+        }
     }
 }

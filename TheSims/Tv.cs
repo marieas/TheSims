@@ -8,5 +8,9 @@ namespace TheSims
 {
     public class Tv : InteriorItem
     {
+        public Tv() : base("Tv")
+        {
+
+        }
     }
 }

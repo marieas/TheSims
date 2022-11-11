@@ -29,8 +29,7 @@ namespace TheSims
     public class BuildMode
     {   public House House { get; set; }
         List<Room> AvailableRooms { get; set; }
-        // pause til 13.07 
-
+        List<InteriorItem> InteriorItems;
         public BuildMode()
         {
             AvailableRooms = new List<Room>();
@@ -38,7 +37,11 @@ namespace TheSims
             AvailableRooms.Add(new Bathroom());
             AvailableRooms.Add(new LivingRoom());
             House = new House();
-
+            InteriorItems = new List<InteriorItem> {
+                new Bed(),
+                new Tv(),
+                new Fridge(),
+            };
         }
 
         public void PrintAvailableRooms()
@@ -50,32 +53,69 @@ namespace TheSims
            
         }
         public void ShowMenu()
-        {
-           
+        {           
             var firstFloor = House.GetFirstFloor();
+          
             bool inMenu = true;
             while (true)
             {
-                Console.WriteLine("Welcome to build mode, what room do you want to add? x for exit");
-                PrintAvailableRooms();
+                Console.WriteLine("Welcome to build mode, build house: b, decorate: d");
                 var choice = Console.ReadLine();
                 switch (choice)
                 {
-                    case "1":
-                        firstFloor.AddRoomToFloor(new Kitchen());
+                    case "b":
+                        BuildMenu();
                         break;
-                    case "2":
-                        firstFloor.AddRoomToFloor(new Bathroom());
+                    case "d":
+                        DecorateMenu();
                         break;
-                    case "3":
-                        firstFloor.AddRoomToFloor(new Bedroom());
-                        break;
-                    default:
-                        firstFloor.PrintRooms();
-                        return;                       
-                }                
+
+                }
+                    
             }
             
+        }
+
+        private void DecorateMenu()
+        {
+
+        }
+
+        private void BuildMenu()
+        {
+            Console.WriteLine("how many floors do you want? x for exit");
+            var numFloors = Console.ReadLine();
+            var convertedNumFloors = Convert.ToInt32(numFloors);
+            House.AddFloors(convertedNumFloors);
+
+            Console.WriteLine("what level do you want to edit? x for exit");
+            var levelToEditInput = Console.ReadLine();
+            var converteLevelToEditInput = Convert.ToInt32(levelToEditInput);
+
+            RoomMenu(converteLevelToEditInput);
+        }
+
+        private void RoomMenu(int level)
+        {
+            var floorToEdit = House.Floors[level];
+
+            PrintAvailableRooms();
+            var choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "1":
+                    House.AddRoom(new Kitchen(), floorToEdit);
+                    break;
+                case "2":
+                    House.AddRoom(new Bathroom(), floorToEdit);
+                    break;
+                case "3":
+                    House.AddRoom(new Bedroom(), floorToEdit);
+                    break;
+                default:
+                    floorToEdit.PrintRooms();
+                    return;
             }
+        }
     }
 }

@@ -8,5 +8,9 @@ namespace TheSims
 {
     public class Bed : InteriorItem
     {
+        public Bed() : base("Seng")
+        {
+
+        }
     }
 }

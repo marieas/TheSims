@@ -5,8 +5,7 @@ namespace TheSims
 
             Du har 3 modus i spillet: FamilieModus, ByggModus, SpillModus
             Brukeren skal kunne opprette et eller flere familiemedlemmer i spillet.
-            Familiemedlemmer kan være voksne eller barn. 
-           
+            Familiemedlemmer kan være voksne eller barn.            
 
             Disse gjenstandene har tilknyttede handlinger ex:
             Kjøleskap - Hent mat
